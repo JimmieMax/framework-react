@@ -1,5 +1,5 @@
 ## Framework React
-    :watermelon: Framework-Vue is the latest framework with a lot of middleware and build-tools.
+    :watermelon Framework-Vue is the latest framework with a lot of middleware and build-tools.
 
 ## Tech Stack
  - [Node](https://nodejs.org)
