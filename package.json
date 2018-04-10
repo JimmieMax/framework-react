@@ -1,16 +1,16 @@
 {
-  "name": "framework_react",
+  "name": "framework-react",
   "version": "1.0.0",
-  "description": "base on webpack es6",
+  "description": "Framework: node+koa+webpack+reaqct,base on webpack es6",
   "main": "app.js",
   "scripts": {
-    "build": "webpack --progress --config build/webpack.config.js",
-    "dev": "node bin/dev-server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app",
+    "release": "webpack --progress --config build/webpack.prod.conf.js",
+    "dev": "node bin/dev-server"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/explore-projects/Explore_react.git"
+    "url": "git+https://github.com/JimmieMax/framework-react.git"
   },
   "keywords": [
     "react"
@@ -18,12 +18,13 @@
   "author": "Jimmie Max",
   "license": "ISC",
   "bugs": {
-    "url": "https://gitlab.com/explore-projects/Explore_react/issues"
+    "url": "https://github.com/JimmieMax/framework-react/issues"
   },
-  "homepage": "https://gitlab.com/explore-projects/Explore_react#README",
+  "homepage": "https://github.com/JimmieMax/framework-react#readme",
   "dependencies": {
-    "react": "^16.2.0",
-    "react-dom": "^16.3.1"
+    "koa": "^2.5.0",
+    "koa-static": "^4.0.2",
+    "koa-views": "^6.1.4"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -31,6 +32,8 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "open-browser-webpack-plugin": "0.0.5",
+    "react": "^16.2.0",
+    "react-dom": "^16.3.1",
     "webpack": "^4.5.0",
     "webpack-cli": "^2.0.14",
     "webpack-dev-server": "^3.1.2",

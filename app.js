@@ -4,7 +4,7 @@ const Koa = require('koa')
     , path = require('path')
     , views = require('koa-views')
     , Static = require('koa-static')
-    , config = require('../config');
+    , config = require('./config');
 
 const app = new Koa();
 
@@ -14,9 +14,7 @@ app
     .use(views(path.resolve(__dirname, './src')))
     .use(async (ctx,next) => {
         if (ctx.originalUrl == '/') {
-            await ctx.render('/client')
-        } else if (ctx.originalUrl == '/admin') {
-            await ctx.render('/admin')
+            await ctx.render('/app')
         } else {
             await next();
         }
