@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import HomeComponent from './component/home.js'
+import HomeComponent from './component/home.jsx'
 
 export default class App extends Component {
     render() {

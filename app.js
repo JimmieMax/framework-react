@@ -9,8 +9,7 @@ const Koa = require('koa')
 const app = new Koa();
 
 app
-    .use(Static(path.resolve(__dirname, './src/dist')))
-    .use(Static(path.resolve(__dirname, './src/asset')))
+    .use(Static(path.resolve(__dirname, './dist')))
     .use(views(path.resolve(__dirname, './src')))
     .use(async (ctx,next) => {
         if (ctx.originalUrl == '/') {

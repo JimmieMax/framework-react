@@ -1,14 +1,32 @@
-const path = require('path')
-    , webpack = require('webpack')
-    , merge = require('webpack-merge')
-    , OpenBrowserPlugin = require('open-browser-webpack-plugin')
-    , config = require('../config')
-    , baseConfig = require('./webpack.base.conf');
+const
+    path = require('path'),
+    webpack = require('webpack'),
+    Merge = require('webpack-merge'),
+    OpenBrowserPlugin = require('open-browser-webpack-plugin'),
+    HtmlWebpackPlugin = require('html-webpack-plugin'),
+    config = require('../config'),
+    baseConfig = require('./webpack.base.conf'),
+    wholePath = config.Server.wholePath();
 
-module.exports = merge(baseConfig, {
+module.exports = Merge(baseConfig, {
     entry: {
         app: [
-            `webpack-dev-server/client?http://${config.Server.host + ":" + config.Server.port}`
+            `webpack-dev-server/client?http://${wholePath}`,//资源服务器地址
+            'webpack/hot/only-dev-server'
+        ]
+    },
+    module: {
+        rules: [
+            {
+                test: /\.(js|jsx)$/,
+                use: {
+                    loader: 'react-hot',
+                    options: {
+                        presets: ['es2015', 'react', 'stage-0'],
+                    }
+                },
+                include: path.join(__dirname, 'js')
+            }
         ]
     },
     plugins: [
@@ -20,7 +38,14 @@ module.exports = merge(baseConfig, {
         new OpenBrowserPlugin({
             url: `http://${config.Server.host + ":" + config.Server.port}`
         }),
-        new webpack.NoEmitOnErrorsPlugin()
+        new webpack.NoEmitOnErrorsPlugin(),
+        new HtmlWebpackPlugin({
+            title: 'React',
+            filename: 'index.html',
+            template: path.resolve(__dirname, '../src/index.html'),
+            chunks: ['app'],
+            inject: true
+        }),
     ],
     mode: 'development',
     devtool: 'source-map',
